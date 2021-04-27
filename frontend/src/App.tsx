@@ -1,36 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-import Axios from 'axios';
+import { CssBaseline } from '@material-ui/core';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { LoginPage } from './pages';
 
 function App() {
-	function getProdutos() {
-		Axios.get('/api/produtos')
-			.then((res) => {
-				console.log(res.data);
-			})
-			.catch((err) => console.error(err));
-	}
-
 	return (
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/App.tsx</code> and save to reload.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-				<button onClick={getProdutos}>Click Me</button>
-			</header>
-		</div>
+		<>
+			<CssBaseline />
+
+			<Router>
+				<Switch>
+					<Route path="/" exact component={LoginPage} />
+				</Switch>
+			</Router>
+		</>
 	);
 }
 
