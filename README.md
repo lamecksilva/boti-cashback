@@ -1,2 +1,0 @@
-# boti-cashback
-Cashback Boti
