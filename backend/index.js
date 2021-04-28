@@ -29,6 +29,15 @@ app.use('/api/usuarios', usuarioRoutes());
 app.use('/api/compras', comprasRoutes());
 app.use('/api/cashback', cashbackRoutes());
 
+if (process.env.NODE_ENV === 'production') {
+	// Set static folder
+	app.use(express.static('frontend/build'));
+
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+	});
+}
+
 app.use((err, req, res, next) => {
 	// await errorHandler(err)
 	console.error(err);
@@ -39,19 +48,6 @@ app.use((err, req, res, next) => {
 		error: error?.message || error,
 	});
 });
-
-// app.get('/api/produtos', (req, res) => {
-// 	return res.json([
-// 		{
-// 			codigo: '12912381923',
-// 			valor: 240.0,
-// 			data: new Date().toISOString(),
-// 			porcentagemCashback: 10,
-// 			valorCashback: 24.0,
-// 			status: 1,
-// 		},
-// 	]);
-// });
 
 const PORT = process.env.PORT || 9000;
 
