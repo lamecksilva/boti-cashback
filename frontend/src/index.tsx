@@ -3,21 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { Provider } from 'react-redux';
-import { store } from './state';
-import theme from './theme';
-import { ThemeProvider } from '@material-ui/styles';
-
-ReactDOM.render(
-	<>
-		<Provider store={store}>
-			<ThemeProvider theme={theme}>
-				<App />
-			</ThemeProvider>
-		</Provider>
-	</>,
-	document.getElementById('root')
-);
+ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
