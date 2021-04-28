@@ -82,7 +82,7 @@ export function simpleReturn(type: string, payload: any) {
  * @param type
  */
 export function errorHandler(err: any, dispatch: any, type: string) {
-	// console.log(err.message);
+	console.log(err.message);
 	// console.log(err);
 	// console.dir(err);
 	// console.log(err.response);
