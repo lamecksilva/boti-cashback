@@ -18,7 +18,7 @@
 	"private": false,
 	"scripts": {
 		"frontend-install": "cd frontend  --prefix frontend",
-		"start": "node server.js",
+		"start": "node index.js",
 		"server": "nodemon server.js",
 		"frontend": "npm start --prefix frontend",
 		"dev": "concurrently \"npm run server\" \"npm run frontend\"",
