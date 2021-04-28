@@ -27,14 +27,14 @@ export const getProdutosListagemAction = (): AppThunk => async (dispatch) => {
 	}
 };
 
-interface CriarProdutoParams {
+interface CriarCompraParams {
 	valor: number;
 	codigo: string;
 	data: Date;
 }
 
-export const createProdutoAction = (
-	params: CriarProdutoParams,
+export const createCompraAction = (
+	params: CriarCompraParams,
 	history: any
 ): AppThunk => async (dispatch) => {
 	dispatch({ type: REQUEST_CRIAR_COMPRA });

@@ -70,6 +70,7 @@ export function CadastroPage(): JSX.Element {
 							event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
 						) => setState({ ...state, nome: event.target.value })}
 						error={!isEmpty(errors?.nome)}
+						helperText={errors?.nome}
 					/>
 					<TextField
 						variant="outlined"
@@ -85,6 +86,7 @@ export function CadastroPage(): JSX.Element {
 							event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
 						) => setState({ ...state, cpf: event.target.value })}
 						error={!isEmpty(errors?.cpf)}
+						helperText={errors?.cpf}
 					/>
 					<TextField
 						variant="outlined"
@@ -100,6 +102,7 @@ export function CadastroPage(): JSX.Element {
 							event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
 						) => setState({ ...state, email: event.target.value })}
 						error={!isEmpty(errors?.email)}
+						helperText={errors?.email}
 					/>
 					<TextField
 						variant="outlined"
@@ -115,6 +118,7 @@ export function CadastroPage(): JSX.Element {
 							event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
 						) => setState({ ...state, senha: event.target.value })}
 						error={!isEmpty(errors?.senha)}
+						helperText={errors?.senha}
 					/>
 					<Button
 						type="submit"

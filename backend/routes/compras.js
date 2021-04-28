@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const passport = require('passport');
 const Compra = require('../db/models/Compra');
+const isEmpty = require('../utils/is-empty');
 
 const router = Router();
 
@@ -10,6 +11,17 @@ module.exports = function comprasRoutes() {
 		passport.authenticate('jwt', { session: false }),
 		async (req, res) => {
 			try {
+				const errors = {};
+				isEmpty(req.body.valor) &&
+					(errors.valor = 'O Campo valor é obrigatório');
+				isEmpty(req.body.data) && (errors.data = 'O Campo data é obrigatório');
+				isEmpty(req.body.codigo) &&
+					(errors.codigo = 'O campo código é obrigatório');
+
+				if (!isEmpty(errors)) {
+					return res.status(400).json({ success: false, errors });
+				}
+
 				const { valor } = req.body;
 
 				const porcentagemCashback = valor > 500 ? 10 : 5;
