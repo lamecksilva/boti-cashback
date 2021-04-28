@@ -83,7 +83,7 @@ export function CadastroCompraPage(): JSX.Element {
 						type="date"
 						fullWidth
 						id="data"
-						label="Data"
+						label="Data mm/dd/yyyy"
 						name="data"
 						onChange={(
 							event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
