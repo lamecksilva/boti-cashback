@@ -10,6 +10,7 @@ export default makeStyles((theme: Theme) => ({
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
+		padding: theme.spacing(2),
 	},
 	avatar: {
 		margin: theme.spacing(1),

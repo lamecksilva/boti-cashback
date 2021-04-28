@@ -18,18 +18,17 @@ export function errorsObject(
 	message: string,
 	dispatch?: any
 ): any {
-	const errs: any = {};
+	// const errs: any = {};
 
-
-	Object.keys(errors).forEach((key: any) => {
-		errs[key] = typeof errors[key] === 'object' ? errors[key][0] : errors[key];
-	});
+	// Object.keys(errors).forEach((key: any) => {
+	// 	errs[key] = typeof errors[key] === 'object' ? errors[key][0] : errors[key];
+	// });
 
 	return dispatch({
 		type,
 		payload: {
 			errorMessage: message,
-			errors: errs,
+			errors,
 		},
 	});
 }
@@ -84,6 +83,8 @@ export function simpleReturn(type: string, payload: any) {
  */
 export function errorHandler(err: any, dispatch: any, type: string) {
 	console.log(err.message);
+	console.log(err);
+	console.dir(err);
 	// console.log(err.response);
 
 	return isEmpty(err.response)
@@ -91,10 +92,10 @@ export function errorHandler(err: any, dispatch: any, type: string) {
 		: typeof err.response.data.error === 'string'
 		? errorMessage(type, err.response.data.error, dispatch)
 		: // Check if is a object of errors
-		typeof err.response.data.error === 'object'
+		typeof err.response.data.errors === 'object'
 		? errorsObject(
 				type,
-				err.response.data.error,
+				err.response.data.errors,
 				err?.response.data.message,
 				dispatch
 		  )

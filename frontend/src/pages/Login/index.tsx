@@ -4,6 +4,7 @@ import {
 	Container,
 	Grid,
 	Link,
+	Paper,
 	TextField,
 	Typography,
 } from '@material-ui/core';
@@ -43,7 +44,7 @@ export function LoginPage(): JSX.Element {
 
 	return (
 		<Container component="main" maxWidth="xs">
-			<div className={classes.paper}>
+			<Paper className={classes.paper}>
 				<Typography variant="h5" align="center">
 					Boti Cashback - Login
 				</Typography>
@@ -90,15 +91,15 @@ export function LoginPage(): JSX.Element {
 						Entrar
 					</Button>
 
-					<Link component={RouterLink} to="/cadastro" variant="body1">
-						Cadastrar-se
-					</Link>
-
-					<Grid container>
-						<Grid item xs></Grid>
+					<Grid container direction="row" justify="center" alignItems="center">
+						<Grid item>
+							<Link component={RouterLink} to="/cadastro" variant="body1">
+								Cadastrar-se
+							</Link>
+						</Grid>
 					</Grid>
 				</div>
-			</div>
+			</Paper>
 		</Container>
 	);
 }
