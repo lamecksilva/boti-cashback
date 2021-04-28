@@ -119,14 +119,24 @@ export function Navbar(): JSX.Element {
 				<List className={classes.list}>
 					<Divider />
 
-					<Link to="/dashboard" key="dashboard" className={classes.link}>
+					<Link
+						to="/dashboard"
+						onClick={handleDrawer}
+						key="dashboard"
+						className={classes.link}
+					>
 						<ListItem button>
 							{/* <ListItemIcon>{item.icon}</ListItemIcon> */}
 							<ListItemText primary="Dashboard" />
 						</ListItem>
 					</Link>
 					<Divider />
-					<Link to="/compras" key="compras" className={classes.link}>
+					<Link
+						to="/compras"
+						key="compras"
+						onClick={handleDrawer}
+						className={classes.link}
+					>
 						<ListItem button>
 							{/* <ListItemIcon>{item.icon}</ListItemIcon> */}
 							<ListItemText primary="Minhas Compras" />

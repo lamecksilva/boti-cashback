@@ -26,7 +26,6 @@ export function DashboardPage(): JSX.Element {
 	}, [dispatch]);
 
 	const columns: GridColDef[] = [
-		// { field: 'id', headerName: 'ID' },
 		{
 			field: 'codigo',
 			headerName: 'Código',
@@ -55,18 +54,6 @@ export function DashboardPage(): JSX.Element {
 			valueGetter: (params: GridValueGetterParams) =>
 				`R$ ${params.row.cashback.valor}`,
 		},
-		// { field: 'lastName', headerName: 'Last name', width: 130 },
-		// {
-		// 	field: 'fullName',
-		// 	headerName: 'Full name',
-		// 	description: 'This column has a value getter and is not sortable.',
-		// 	sortable: false,
-		// 	width: 160,
-		// 	valueGetter: (params: GridValueGetterParams) =>
-		// 		`${params.getValue('firstName') || ''} ${
-		// 			params.getValue('lastName') || ''
-		// 		}`,
-		// },
 	];
 
 	return (

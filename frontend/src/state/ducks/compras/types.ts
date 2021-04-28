@@ -10,10 +10,26 @@ interface ErrorObjectType {
 	[key: string]: string;
 }
 
+export interface Compra {
+	_id: string;
+	status: number;
+	codigo: string;
+	valor: number;
+	data: string;
+	usuario: string;
+	cashback: Cashback;
+	__v: number;
+}
+
+export interface Cashback {
+	porcentagem: number;
+	valor: number;
+}
+
 export interface ComprasState {
 	listagem: {
 		loading: boolean;
-		data: any;
+		data: any | Compra[];
 		errorMessage: string;
 	};
 	criar: {
