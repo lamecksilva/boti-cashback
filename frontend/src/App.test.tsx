@@ -1,12 +1,11 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-	render(<App />);
+afterEach(cleanup);
 
-	// const linkElement = screen.getByText(/Boti Cashback - Login/i);
-	const loginTextElement = screen.getByText(/Boti Cashback - Login/i);
+test('It Renders Login Page', () => {
+	const { getByText } = render(<App />);
 
-	expect(loginTextElement).toBeInTheDocument();
+	expect(getByText(/Boti Cashback - Login/i)).toBeInTheDocument();
 });

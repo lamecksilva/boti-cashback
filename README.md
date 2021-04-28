@@ -12,6 +12,12 @@
 > Cashback quer dizer “dinheiro de volta”, e funciona de forma simples: o revendedor faz uma
 > compra e seu benefício vem com a devolução de parte do dinheiro gasto.
 
+## Acesso
+
+O sistema está online no link: https://boti-cashback.herokuapp.com/login
+
+**OBS:** Caso demore um pouco para carregar a página, o heroku está inicializando a aplicação e irá carregar em alguns segundos.
+
 ## Instalação
 
 ```sh
