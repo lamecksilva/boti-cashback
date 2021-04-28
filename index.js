@@ -3,6 +3,7 @@ require('./utils/passport');
 
 const express = require('express');
 const passport = require('passport');
+const path = require('path');
 const cors = require('cors');
 const morgan = require('morgan');
 const dbConnect = require('./db/connect');
