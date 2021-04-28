@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
-import './App.css';
 
 import { CssBaseline } from '@material-ui/core';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { HomePage, LoginPage } from './pages';
-import { DashboardPage } from './pages/Dashboard';
-import { CadastroPage } from './pages/Cadastro';
-import { ComprasPage } from './pages/Compras';
-import { CadastroCompraPage } from './pages/CadastroCompra';
+import {
+	CadastroCompraPage,
+	ComprasPage,
+	HomePage,
+	CadastroPage,
+	LoginPage,
+	DashboardPage,
+} from './pages';
 import { useDispatch } from 'react-redux';
 import { getAuthToken } from './utils';
 import {
