@@ -14,15 +14,21 @@ import { BaseContainer } from '../../components';
 import useStyles from './styles';
 import { getProdutosListagemAction } from '../../state/ducks/compras/actions';
 import { RootState } from '../../state/reducer';
+import { getTotalDataAction } from '../../state/ducks/geral/actions';
+import { format } from 'date-fns';
 
 export function DashboardPage(): JSX.Element {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 
 	const { data } = useSelector((state: RootState) => state.compras.listagem);
+	const { totalCashback, totalCompras } = useSelector(
+		(state: RootState) => state.geral.totalData.data
+	);
 
 	useEffect(() => {
 		dispatch(getProdutosListagemAction());
+		dispatch(getTotalDataAction());
 	}, [dispatch]);
 
 	const columns: GridColDef[] = [
@@ -54,29 +60,73 @@ export function DashboardPage(): JSX.Element {
 			valueGetter: (params: GridValueGetterParams) =>
 				`R$ ${params.row.cashback.valor}`,
 		},
+		{
+			field: 'data',
+			headerName: 'Data',
+			width: 150,
+			editable: false,
+			sortable: false,
+			resizable: false,
+			disableColumnMenu: true,
+			valueGetter: (params: GridValueGetterParams) =>
+				`${format(new Date(params.row.data), 'dd/MM/yyyy')}`,
+		},
 	];
 
 	return (
 		<BaseContainer>
-			<Grid container spacing={1} direction="row" justify="space-between">
-				<Grid item xs={6} md={6} className={classes.gridCard1}>
-					<Typography variant="body1">R$ Total Cashback</Typography>
+			<Grid
+				container
+				spacing={1}
+				direction="row"
+				justify="center"
+				alignItems="center"
+			>
+				<Grid
+					item
+					xs={6}
+					md={6}
+					sm={6}
+					lg={6}
+					xl={6}
+					className={classes.gridCard1}
+				>
+					<div className={classes.p1}>
+						<Typography variant="body1">R$ Total Cashback</Typography>
 
-					<Typography variant="h5">R$ 10.00</Typography>
+						<Typography variant="h5">R$ {totalCashback || 0.0}</Typography>
+					</div>
 				</Grid>
-				<Grid item xs={6} md={6} className={classes.gridCard2}>
-					<Typography variant="body1">Compras Cadastradas</Typography>
 
-					<Typography variant="h5">12</Typography>
+				<Grid
+					item
+					xs={6}
+					md={6}
+					sm={6}
+					lg={6}
+					xl={6}
+					className={classes.gridCard2}
+				>
+					<div className={classes.p1}>
+						<Typography variant="body1">Compras Cadastradas</Typography>
+
+						<Typography variant="h5">{totalCompras || 0}</Typography>
+					</div>
 				</Grid>
 			</Grid>
 
-			<Typography variant="h6" className={classes.mt2} gutterBottom>
-				Compras
-			</Typography>
-
-			<Grid container spacing={2}>
+			<Grid
+				container
+				spacing={2}
+				direction="row"
+				justify="center"
+				alignItems="center"
+			>
 				<Grid item xs={12} md={6} sm={6} lg={6} xl={6}>
+					<Typography variant="h6" className={classes.mt2} gutterBottom>
+						Compras
+					</Typography>
+
 					<div className={classes.gridContainer}>
 						<DataGrid
 							columns={columns}
@@ -129,7 +179,7 @@ export function DashboardPage(): JSX.Element {
 						</Grid>
 					</div>
 				</Grid>
-				<Grid item xs={12} md={6} sm={6} lg={6} xl={6}></Grid>
+				{/* <Grid item xs={12} md={6} sm={6} lg={6} xl={6}></Grid> */}
 			</Grid>
 		</BaseContainer>
 	);

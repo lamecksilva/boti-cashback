@@ -3,17 +3,23 @@ import { makeStyles, Theme } from '@material-ui/core';
 export default makeStyles((theme: Theme) => ({
 	gridCard1: {
 		minHeight: '100px',
-		padding: theme.spacing(4),
+		padding: theme.spacing(2),
 		backgroundColor: theme.palette.primary.main,
+		// borderRadius: theme.spacing(0.5),
 		// borderTopLeftRadius: theme.spacing(0.7),
 		// borderBottomLeftRadius: theme.spacing(0.7),
 	},
 	gridCard2: {
 		minHeight: '100px',
-		padding: theme.spacing(4),
+		padding: theme.spacing(2),
 		backgroundColor: theme.palette.primary.light,
+		// borderRadius: theme.spacing(0.5),
+
 		// borderTopRightRadius: theme.spacing(0.7),
 		// borderBottomRightRadius: theme.spacing(0.7),
+	},
+	p1: {
+		padding: theme.spacing(1),
 	},
 	mt2: {
 		marginTop: theme.spacing(2),
