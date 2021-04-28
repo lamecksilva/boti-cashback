@@ -1,9 +1,15 @@
 import { AppThunk } from '../..';
-import { setAuthToken, axios, errorHandler } from '../../../utils';
+import {
+	setAuthToken,
+	axios,
+	errorHandler,
+	removeAuthToken,
+} from '../../../utils';
 import {
 	FAILURE_AUTH_TOKEN,
 	FAILURE_CADASTRO,
 	FAILURE_LOGIN,
+	LOGOUT_USER,
 	REQUEST_AUTH_TOKEN,
 	REQUEST_CADASTRO,
 	REQUEST_LOGIN,
@@ -30,6 +36,18 @@ interface LoginActionParams {
 	email: string;
 	senha: string;
 }
+
+export const logoutAction = (history: any): AppThunk => (dispatch) => {
+	dispatch({ type: LOGOUT_USER });
+
+	try {
+		removeAuthToken();
+
+		history.push('/');
+	} catch (err) {
+		errorHandler(err, dispatch, 'type/LOGOUT_USER_ERROR');
+	}
+};
 
 export const loginRequestAction = (
 	loginData: LoginActionParams,

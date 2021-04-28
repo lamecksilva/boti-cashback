@@ -1,7 +1,7 @@
 // import { Navbar } from 'components';
 import React from 'react';
 
-// import { Navbar } from '../../Navbar';
+import { Navbar } from '../../Navbar';
 import useStyles from './styles';
 
 interface BaseContainerProps {
@@ -13,7 +13,7 @@ export function BaseContainer({ children }: BaseContainerProps): JSX.Element {
 
 	return (
 		<div className={classes.root}>
-			{/* <Navbar /> */}
+			<Navbar />
 
 			<div className={classes.content}>
 				<div className={classes.toolbar} />
