@@ -1,3 +1,4 @@
+import jwtDecode from 'jwt-decode';
 import { AppThunk } from '../..';
 import { authorizationHeader, axios, errorHandler } from '../../../utils';
 import {
@@ -13,7 +14,12 @@ export const getProdutosListagemAction = (): AppThunk => async (dispatch) => {
 	dispatch({ type: REQUEST_COMPRAS_LISTAGEM });
 
 	try {
-		const { data } = await axios.get('/compras', authorizationHeader());
+		const decoded: any = jwtDecode(localStorage.authToken);
+
+		const { data } = await axios.get(
+			`/compras/usuario/${decoded.id}`,
+			authorizationHeader()
+		);
 
 		return dispatch({ type: SUCCESS_COMPRAS_LISTAGEM, payload: data.payload });
 	} catch (err) {
